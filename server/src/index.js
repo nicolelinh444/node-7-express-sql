@@ -57,6 +57,13 @@ async function getNewestAnimal() {
 }
 
 // 5. deleteOneAnimal(id)
+async function deleteOneAnimal(id) {
+  const deletedAnimal = await db.query(
+    "DELETE FROM animals WHERE id = $1 RETURNING *",
+    [id]
+  );
+  return deletedAnimal.rows[0];
+}
 
 // 6. addOneAnimal(name, category, can_fly, lives_in)
 
@@ -97,6 +104,12 @@ app.get("/get-newest-animal", async (req, res) => {
 });
 
 // 5. POST /delete-one-animal/:id
+app.post("/delete-one-animal/:id", async (req, res) => {
+  const id = req.params.id;
+  const deletedAnimal = await deleteOneAnimal(id);
+
+  res.json(deletedAnimal);
+});
 
 // 6. POST /add-one-animal
 
