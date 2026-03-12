@@ -69,7 +69,7 @@ function App() {
                   deleteOneAnimal(animal.id);
                 }}
               >
-                Delete Animal
+                Delete Animal 😢
               </button>
             </div>
           ))}
