@@ -28,9 +28,6 @@ function App() {
   };
 
   const deleteOneAnimal = async (id) => {
-    // Now it's your turn!
-    // Send a POST request to the /delete-one-animal endpoint
-    // to delete an animal based on the id.
     await fetch(`/api/delete-one-animal/${id}`, {
       method: "POST",
       headers: {
